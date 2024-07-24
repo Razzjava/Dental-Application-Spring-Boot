@@ -1,5 +1,6 @@
 package com.raz.dentalapplication.User;
 
+import com.raz.dentalapplication.Dentist.DentalService;
 import com.raz.dentalapplication.Dentist.Dentist;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
+    private DentalService dentalService;
 
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
@@ -46,6 +48,8 @@ public class UserService {
             newUser.setAddress(user.address());
             newUser.setContactNumber(user.contactNumber());
             userRepository.save(newUser);
+
+            dentalService.updateRemainingSpaces(user.dentistId());
         }
 
 

@@ -54,11 +54,17 @@ public class DentalService {
     public void updateRemainingSpaces(Integer id){
 
         Optional<Dentist> updateDentist = dentalRepository.findById(id);
+        int remainingSpaces = updateDentist.map(Dentist::getNumOfSpaces).orElse(0);
 
-        updateDentist.isPresent(instance -> {
-            instance.setNumOfSpaces(0);
+        if(remainingSpaces > 0 ){
+            remainingSpaces -= 1;
+            int finalRemainingSpaces = remainingSpaces;
+            updateDentist.ifPresent(dentist -> {
+                dentist.setNumOfSpaces(finalRemainingSpaces);
+                dentalRepository.save(dentist);
+            });
+        }
 
-        });
 
 
     }
