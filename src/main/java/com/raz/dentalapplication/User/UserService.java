@@ -14,8 +14,9 @@ public class UserService {
     private final UserRepository userRepository;
     private DentalService dentalService;
 
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository, DentalService dentalService){
         this.userRepository = userRepository;
+        this.dentalService = dentalService;
     }
 
     public List<UserDTO> getUsersByDentalID(Integer id){
