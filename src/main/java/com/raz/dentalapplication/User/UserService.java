@@ -1,14 +1,14 @@
 package com.raz.dentalapplication.User;
 
 import com.raz.dentalapplication.Dentist.DentalService;
-import com.raz.dentalapplication.Dentist.Dentist;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class UserService {
 
     private final UserRepository userRepository;
@@ -36,7 +36,7 @@ public class UserService {
 
     public void registerUser(UserDTO user){
 
-        User newUser = new User();
+        Users newUser = new Users();
 
         if(user.dentistId() == null){
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "no dentist id");
