@@ -9,6 +9,8 @@ import AllDentists from "./components/AllDentists.jsx";
 import RegisterDentalPractice from "./components/RegisterDentalPractice.jsx";
 import RegisterUser from "./components/RegisterUser.jsx";
 import ConfirmationScreen from "./components/ConfirmationScreen.jsx";
+import DentalConfirmation from "./components/DentalConfirmation.jsx";
+
 
 const router = createBrowserRouter([
     {
@@ -31,6 +33,11 @@ const router = createBrowserRouter([
     {
         path:"/confirmation",
         element:<ConfirmationScreen></ConfirmationScreen>
+    },
+    {
+        path:"/DentalConfirmation",
+        element:<DentalConfirmation></DentalConfirmation>
+
     }
 ]);
 

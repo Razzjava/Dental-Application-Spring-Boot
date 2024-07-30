@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 function RegisterDentalPractice(){
     const [companyName, setCompanyName] = useState("");
@@ -7,6 +7,7 @@ function RegisterDentalPractice(){
     const [city, setCity] = useState("")
     const [spaces, setSpaces] =useState(0)
     const [address, setAddress] = useState("")
+    const navigate = useNavigate();
 
     const handleName = (e)=>{
         setCompanyName(e.target.value);
@@ -45,6 +46,7 @@ function RegisterDentalPractice(){
         })
 
         setValuesToNull();
+        navigate("/DentalConfirmation");
 
     }
 
