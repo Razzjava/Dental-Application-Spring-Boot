@@ -24,7 +24,8 @@ public class DentalService {
                         dentist.getCompanyName(),
                         dentist.getAddress(),
                         dentist.getCity(),
-                        dentist.getNumOfSpaces()
+                        dentist.getNumOfSpaces(),
+                        dentist.getEmailAddress()
 
                 )
         )
@@ -39,12 +40,14 @@ public class DentalService {
         Dentist newDentist  = new Dentist();
 
         if (dentist.numOfSpaces() == null){
+            System.out.println(dentist);
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "missing spaces available");
         } else{
             newDentist.setCity(dentist.city());
             newDentist.setAddress(dentist.address());
             newDentist.setCompanyName(dentist.companyName());
             newDentist.setNumOfSpaces(dentist.numOfSpaces());
+            newDentist.setEmailAddress(dentist.emailAddress());
 
             dentalRepository.save(newDentist);
         }

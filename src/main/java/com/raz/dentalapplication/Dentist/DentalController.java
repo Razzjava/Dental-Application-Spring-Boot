@@ -3,11 +3,12 @@ package com.raz.dentalapplication.Dentist;
 import com.raz.dentalapplication.User.UserDTO;
 import com.raz.dentalapplication.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 public class DentalController {
 
@@ -28,7 +29,11 @@ public class DentalController {
         return allDentists;
 
 
+    }
 
+    @PostMapping(value = "/createdentist")
+    public void createDentist(@RequestBody DentistDTO dentist){
+        dentalService.createNewDentist(dentist);
 
     }
 

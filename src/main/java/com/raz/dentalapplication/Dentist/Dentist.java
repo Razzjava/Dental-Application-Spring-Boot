@@ -13,19 +13,29 @@ public class Dentist {
     @GeneratedValue
     private Integer id;
     private String companyName;
+    private String emailAddress;
     private String address;
     private String city;
     private Integer numOfSpaces;
 
-    public Dentist(Integer id, String companyName, String address, String city, Integer numOfSpaces) {
+    public Dentist(Integer id, String companyName, String address, String city, Integer numOfSpaces, String emailAddress) {
         this.id = id;
         this.companyName = companyName;
         this.address = address;
         this.city = city;
         this.numOfSpaces = numOfSpaces;
+        this.emailAddress = emailAddress;
     }
 
     public Dentist(){}
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 
     @Override
     public boolean equals(Object o) {

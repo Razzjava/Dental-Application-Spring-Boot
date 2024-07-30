@@ -6,6 +6,6 @@ public record UserDTO(
         String name,
         String address,
         Integer dentistId,
-        Integer contactNumber
+        String contactNumber
 ) {
 }

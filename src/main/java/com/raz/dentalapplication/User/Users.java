@@ -16,7 +16,7 @@ public class Users {
     private String name;
     private String address;
     private Integer dentistId;
-    private Integer contactNumber;
+    private String contactNumber;
 
 
 
@@ -52,11 +52,11 @@ public class Users {
         this.dentistId = dentistId;
     }
 
-    public Integer getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(Integer contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
