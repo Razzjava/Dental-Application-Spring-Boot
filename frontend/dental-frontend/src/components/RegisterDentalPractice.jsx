@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 function RegisterDentalPractice(){
     const [companyName, setCompanyName] = useState("");
@@ -50,6 +51,7 @@ function RegisterDentalPractice(){
 
     return (
         <>
+            <Link className={" position-absolute top-0 start-0"} to={"/"} >Return Home</Link>
             <div className="mb-3">
                 <label htmlFor="PracticeName" className="form-label">Practice Name</label>
                 <input type="text" className="form-control" id="practiceName"

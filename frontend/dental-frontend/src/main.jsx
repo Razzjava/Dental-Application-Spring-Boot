@@ -8,6 +8,8 @@ import ErrorPage from "./error-page";
 import AllDentists from "./components/AllDentists.jsx";
 import RegisterDentalPractice from "./components/RegisterDentalPractice.jsx";
 import RegisterUser from "./components/RegisterUser.jsx";
+import ConfirmationScreen from "./components/ConfirmationScreen.jsx";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -25,6 +27,10 @@ const router = createBrowserRouter([
     {
         path:"/registeruser",
         element: <RegisterUser></RegisterUser>
+    },
+    {
+        path:"/confirmation",
+        element:<ConfirmationScreen></ConfirmationScreen>
     }
 ]);
 
