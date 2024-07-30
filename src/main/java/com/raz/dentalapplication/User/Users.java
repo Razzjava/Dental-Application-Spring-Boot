@@ -3,11 +3,12 @@ package com.raz.dentalapplication.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.util.Objects;
 
 @Entity
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue
@@ -15,7 +16,8 @@ public class User {
     private String name;
     private String address;
     private Integer dentistId;
-    private Integer contactNumber;
+    private String contactNumber;
+
 
 
     public Integer getId() {
@@ -50,11 +52,11 @@ public class User {
         this.dentistId = dentistId;
     }
 
-    public Integer getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(Integer contactNumber) {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
@@ -62,7 +64,7 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        Users user = (Users) o;
         return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(address, user.address) && Objects.equals(dentistId, user.dentistId) && Objects.equals(contactNumber, user.contactNumber);
     }
 

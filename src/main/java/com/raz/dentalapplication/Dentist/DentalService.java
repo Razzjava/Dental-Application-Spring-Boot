@@ -1,12 +1,14 @@
 package com.raz.dentalapplication.Dentist;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class DentalService {
 
     private final DentalRepository dentalRepository;
@@ -22,7 +24,8 @@ public class DentalService {
                         dentist.getCompanyName(),
                         dentist.getAddress(),
                         dentist.getCity(),
-                        dentist.getNumOfSpaces()
+                        dentist.getNumOfSpaces(),
+                        dentist.getEmailAddress()
 
                 )
         )
@@ -37,12 +40,14 @@ public class DentalService {
         Dentist newDentist  = new Dentist();
 
         if (dentist.numOfSpaces() == null){
+            System.out.println(dentist);
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "missing spaces available");
         } else{
             newDentist.setCity(dentist.city());
             newDentist.setAddress(dentist.address());
             newDentist.setCompanyName(dentist.companyName());
             newDentist.setNumOfSpaces(dentist.numOfSpaces());
+            newDentist.setEmailAddress(dentist.emailAddress());
 
             dentalRepository.save(newDentist);
         }
@@ -54,11 +59,17 @@ public class DentalService {
     public void updateRemainingSpaces(Integer id){
 
         Optional<Dentist> updateDentist = dentalRepository.findById(id);
+        int remainingSpaces = updateDentist.map(Dentist::getNumOfSpaces).orElse(0);
 
-        updateDentist.isPresent(instance -> {
-            instance.setNumOfSpaces(0);
+        if(remainingSpaces > 0 ){
+            remainingSpaces -= 1;
+            int finalRemainingSpaces = remainingSpaces;
+            updateDentist.ifPresent(dentist -> {
+                dentist.setNumOfSpaces(finalRemainingSpaces);
+                dentalRepository.save(dentist);
+            });
+        }
 
-        });
 
 
     }

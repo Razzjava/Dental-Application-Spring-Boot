@@ -5,7 +5,8 @@ public record DentistDTO(
         String companyName,
         String address,
          String city,
-        Integer numOfSpaces
+        Integer numOfSpaces,
+        String emailAddress
 
 
 ) {
