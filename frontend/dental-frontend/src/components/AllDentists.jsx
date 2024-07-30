@@ -30,6 +30,7 @@ const [dentists, setDentists] = useState([])
 
     return(
         <>
+            <Link className={" position-absolute top-0 start-0"} to={"/"} >Return Home</Link>
             <table className="table">
                 <thead>
                 <tr>

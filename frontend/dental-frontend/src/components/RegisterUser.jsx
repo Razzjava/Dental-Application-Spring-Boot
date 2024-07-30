@@ -35,7 +35,7 @@ const navigate = useNavigate();
         }
         )
 
-       navigate("/")
+       navigate("/confirmation")
 
     }
 

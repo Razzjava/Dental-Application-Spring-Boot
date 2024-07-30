@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 
 function RegisterDentalPractice(){
     const [companyName, setCompanyName] = useState("");
@@ -6,6 +7,7 @@ function RegisterDentalPractice(){
     const [city, setCity] = useState("")
     const [spaces, setSpaces] =useState(0)
     const [address, setAddress] = useState("")
+    const navigate = useNavigate();
 
     const handleName = (e)=>{
         setCompanyName(e.target.value);
@@ -44,12 +46,14 @@ function RegisterDentalPractice(){
         })
 
         setValuesToNull();
+        navigate("/DentalConfirmation");
 
     }
 
 
     return (
         <>
+            <Link className={" position-absolute top-0 start-0"} to={"/"} >Return Home</Link>
             <div className="mb-3">
                 <label htmlFor="PracticeName" className="form-label">Practice Name</label>
                 <input type="text" className="form-control" id="practiceName"
