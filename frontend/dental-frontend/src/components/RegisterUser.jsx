@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 
 
 // showcase as modal
@@ -8,6 +9,7 @@ function RegisterUser({dentist}){
     const [address, setAddress] = useState("")
     const [ contactNumber, setContactNumber ] = useState("")
 
+const navigate = useNavigate();
 
 
 
@@ -30,7 +32,11 @@ function RegisterUser({dentist}){
             method: "POST",
             headers: {"Content-type": "application/json"},
             body: JSON.stringify(user)
-        })
+        }
+        )
+
+       navigate("/")
+
     }
 
 
