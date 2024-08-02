@@ -10,6 +10,7 @@ import RegisterDentalPractice from "./components/RegisterDentalPractice.jsx";
 import RegisterUser from "./components/RegisterUser.jsx";
 import ConfirmationScreen from "./components/ConfirmationScreen.jsx";
 import DentalConfirmation from "./components/DentalConfirmation.jsx";
+import Login from "./components/manager-portal/Login.jsx";
 
 
 const router = createBrowserRouter([
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         path:"/DentalConfirmation",
         element:<DentalConfirmation></DentalConfirmation>
 
+    },
+    {
+        path:"/login",
+        element:<Login></Login>
     }
 ]);
 

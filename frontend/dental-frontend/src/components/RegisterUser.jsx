@@ -54,42 +54,46 @@ const navigate = useNavigate();
                             <button type="button" className="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                         </div>
-                        <div className="modal-body">
+                        <form onSubmit={handleSubmit}>
+                            <div className="modal-body">
 
-                            <div className="card" >
-                                <div className="card-body">
-                                    <h5>Dental Practice Details</h5>
-                                    <h6 className="card-title">{typeof dentist == "undefined"? "hello": "Practice Name: "+dentist.companyName}</h6>
-                                    <h6 className="card-subtitle mb-2 text-body-secondary">{typeof dentist == "undefined"? "hello": "ID: "+dentist.id}</h6>
-                                   <p> {typeof dentist == "undefined"? "hello": "City:  "+dentist.city}  </p>
-                                    <p> {typeof dentist == "undefined"? "hello": "Remaining Spaces: "+dentist.numOfSpaces} </p>
-                                    <p> {typeof dentist == "undefined"? "hello": "Address:  "+dentist.address} </p>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5>Dental Practice Details</h5>
+                                        <h6 className="card-title">{typeof dentist == "undefined" ? "hello" : "Practice Name: " + dentist.companyName}</h6>
+                                        <h6 className="card-subtitle mb-2 text-body-secondary">{typeof dentist == "undefined" ? "hello" : "ID: " + dentist.id}</h6>
+                                        <p> {typeof dentist == "undefined" ? "hello" : "City:  " + dentist.city}  </p>
+                                        <p> {typeof dentist == "undefined" ? "hello" : "Remaining Spaces: " + dentist.numOfSpaces} </p>
+                                        <p> {typeof dentist == "undefined" ? "hello" : "Address:  " + dentist.address} </p>
+
+                                    </div>
+                                </div>
+
+                                <div className="mb-3">
+                                    <label htmlFor="PracticeName" className="form-label">Name</label>
+                                    <input type="text" className="form-control" id="practiceName"
+                                           placeholder="xpz Practice" onChange={handleName} required/>
+
+
+                                    <label htmlFor="ContactNumber" className="form-label">Contact Number</label>
+                                    <input type="text" className="form-control" id="ContactNumber"
+                                           placeholder="07348753847" onChange={handleContactNumber} required/>
 
                                 </div>
-                            </div>
+                                <div className="mb-3">
+                                    <label hmtlFor="exampleFormControlTextarea1" className="form-label">Address</label>
+                                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
+                                              onChange={handleAddress} required></textarea>
+                                </div>
 
-                            <div className="mb-3">
-                                <label htmlFor="PracticeName" className="form-label">Name</label>
-                                <input type="text" className="form-control" id="practiceName"
-                                       placeholder="xpz Practice" onChange={handleName}/>
-
-
-                                <label htmlFor="ContactNumber" className="form-label">Contact Number</label>
-                                <input type="text" className="form-control" id="ContactNumber"
-                                       placeholder="07348753847" onChange={handleContactNumber}/>
 
                             </div>
-                            <div className="mb-3">
-                                <label hmtlFor="exampleFormControlTextarea1" className="form-label">Address</label>
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={handleAddress}></textarea>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel
+                                </button>
+                                <button type="submit" className="btn btn-primary" >Submit</button>
                             </div>
-
-
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

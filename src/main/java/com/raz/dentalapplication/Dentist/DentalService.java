@@ -25,7 +25,8 @@ public class DentalService {
                         dentist.getAddress(),
                         dentist.getCity(),
                         dentist.getNumOfSpaces(),
-                        dentist.getEmailAddress()
+                        dentist.getEmailAddress(),
+                        dentist.getPassword()
 
                 )
         )

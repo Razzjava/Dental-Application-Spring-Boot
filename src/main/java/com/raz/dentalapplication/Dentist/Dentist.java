@@ -1,13 +1,18 @@
 package com.raz.dentalapplication.Dentist;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
+@Data
 @Entity
-public class Dentist {
+public class Dentist implements UserDetails {
 
     @Id
     @GeneratedValue
@@ -17,76 +22,56 @@ public class Dentist {
     private String address;
     private String city;
     private Integer numOfSpaces;
+    private String password;
 
-    public Dentist(Integer id, String companyName, String address, String city, Integer numOfSpaces, String emailAddress) {
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public Dentist(Integer id, String companyName, String address, String city, Integer numOfSpaces, String emailAddress, String password) {
         this.id = id;
         this.companyName = companyName;
         this.address = address;
         this.city = city;
         this.numOfSpaces = numOfSpaces;
         this.emailAddress = emailAddress;
+        this.password = password;
     }
 
-    public Dentist(){}
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
 
-    public String getEmailAddress() {
+
+
+    @Override
+    public String getUsername() {
         return emailAddress;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Dentist dentist = (Dentist) o;
-        return Objects.equals(id, dentist.id) && Objects.equals(companyName, dentist.companyName) && Objects.equals(address, dentist.address) && Objects.equals(city, dentist.city) && Objects.equals(numOfSpaces, dentist.numOfSpaces);
+    public boolean isAccountNonLocked() {
+        return UserDetails.super.isAccountNonLocked();
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, companyName, address, city, numOfSpaces);
+    public boolean isCredentialsNonExpired() {
+        return UserDetails.super.isCredentialsNonExpired();
     }
 
-    public Integer getId() {
-        return id;
+    @Override
+    public boolean isEnabled() {
+        return UserDetails.super.isEnabled();
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public String getCompanyName() {
-        return companyName;
-    }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
+    public Dentist(){}
 
-    public String getAddress() {
-        return address;
-    }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Integer getNumOfSpaces() {
-        return numOfSpaces;
-    }
-
-    public void setNumOfSpaces(Integer numOfSpaces) {
-        this.numOfSpaces = numOfSpaces;
-    }
 }

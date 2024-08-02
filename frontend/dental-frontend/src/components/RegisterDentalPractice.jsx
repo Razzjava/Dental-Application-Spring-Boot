@@ -8,6 +8,7 @@ function RegisterDentalPractice(){
     const [spaces, setSpaces] =useState(0)
     const [address, setAddress] = useState("")
     const navigate = useNavigate();
+    const [password, setPassword] = useState("")
 
     const handleName = (e)=>{
         setCompanyName(e.target.value);
@@ -25,17 +26,22 @@ function RegisterDentalPractice(){
         setAddress(e.target.value);
     }
 
+    const handlePassword = (e)=>{
+        setPassword(e.target.value)
+    }
+
     const setValuesToNull = ()=>{
         setAddress("")
         setSpaces(0);
         setCity("")
         setCompanyName("")
         setEmailAddress("")
+        setPassword()
     }
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        const dentist = {"companyName": companyName, "emailAddress": emailAddress, "city": city, "numOfSpaces": spaces, "address": address}
+        const dentist = {"companyName": companyName, "emailAddress": emailAddress, "city": city, "numOfSpaces": spaces, "address": address, "password":password}
 
         fetch("http://localhost:9002/createdentist", {
         method: "POST",
@@ -54,27 +60,32 @@ function RegisterDentalPractice(){
     return (
         <>
             <Link className={" position-absolute top-0 start-0"} to={"/"} >Return Home</Link>
-            <div className="mb-3">
-                <label htmlFor="PracticeName" className="form-label">Practice Name</label>
-                <input type="text" className="form-control" id="practiceName"
-                       placeholder="xpz Practice" onChange={handleName} />
+            <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                    <label htmlFor="PracticeName" className="form-label">Practice Name</label>
+                    <input type="text" className="form-control" id="practiceName"
+                           placeholder="xpz Practice" onChange={handleName} required/>
 
-                <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1"
-                       placeholder="name@example.com" onChange={handleEmail} />
-                <label htmlFor="city" className="form-label">City</label>
-                <input type="text" className="form-control" id="city"
-                       placeholder="london" onChange={handleCity} />
-                <label htmlFor="openSpaces" className="form-label">Open Spaces</label>
-                <input type="number" className="form-control" id="openSpaces"
-                      onChange={handleSpaces} />
+                    <label htmlFor="exampleFormControlInput1" className="form-label">Email Address (This will be your username)</label>
+                    <input type="email" className="form-control" id="exampleFormControlInput1"
+                           placeholder="name@example.com" onChange={handleEmail} required/>
+                    <label htmlFor="city" className="form-label">City</label>
+                    <input type="text" className="form-control" id="city"
+                           placeholder="london" onChange={handleCity}/>
+                    <label htmlFor="openSpaces" className="form-label">Open Spaces</label>
+                    <input type="number" className="form-control" id="openSpaces"
+                           onChange={handleSpaces} required/>
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <input type="password" className="form-control" id="password"
+                           onChange={handlePassword} required/>
+                </div>
+                <div class="mb-3">
+                    <label hmtlFor="exampleFormControlTextarea1" className="form-label">Address</label>
+                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={handleAddress} required></textarea>
             </div>
-            <div class="mb-3">
-                <label hmtlFor="exampleFormControlTextarea1" className="form-label">Address</label>
-                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={handleAddress} ></textarea>
-            </div>
-            <button type="button" className="btn btn-primary" onClick={handleSubmit} >Submit</button>
-        </>
+            <button  className="btn btn-primary" type={"submit"}  >Submit</button>
+        </form>
+            </>
     )
 
 }

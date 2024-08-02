@@ -4,10 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 import java.util.Objects;
 
 @Entity
+@Data
 public class Users {
 
     @Id
@@ -20,56 +22,5 @@ public class Users {
 
 
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Integer getDentistId() {
-        return dentistId;
-    }
-
-    public void setDentistId(Integer dentistId) {
-        this.dentistId = dentistId;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Users user = (Users) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(address, user.address) && Objects.equals(dentistId, user.dentistId) && Objects.equals(contactNumber, user.contactNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, address, dentistId, contactNumber);
-    }
 }

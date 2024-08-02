@@ -8,7 +8,7 @@ function App() {
 
   return (
       <>
-
+          <Link className={"position-absolute top-0 start-90 translate-middle"} to={"/login"} >Login</Link>
           <h1 className={"fixed-top"}>Dental Application</h1>
           <Home></Home>
           <Link to={"/finddentist"}>Find a Dentist</Link>
